@@ -1,0 +1,59 @@
+/* ----------- 1<div> --------- */
+div{
+    border-style: solid;
+}
+
+/* -------- 4) <section> -------*/
+#main{
+    float: left;
+    min-height: 500px;
+    width: 81%;
+}
+
+/* ----- 4.1) <table> ------ */
+#display table{
+    border-style: solid;
+    width:100%;
+    text-align: center;
+}
+
+#display table th{
+    border-style: solid;
+}
+
+#display table td{
+    border-style:groove;
+}
+
+/* ------- 5) <aside> --------- */
+#side_menu{
+    float: right;
+    min-height: 500px;
+    
+}
+
+/* ---- 5.1) <table> ---- */
+#input table{
+    margin: auto;
+    font-size: 18px;
+}
+
+#input tfoot td{
+    text-align: center;
+    padding-top: 20px;
+}
+
+#input table tbody td:first-child{
+    padding-right: 30px;
+}
+
+/* ---- 5.2 <button> ---- */
+#btn_display{
+    padding: 5px 20px;
+    font-size: 15px;
+}
+
+
+
+
+

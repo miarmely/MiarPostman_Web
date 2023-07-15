@@ -1,0 +1,9 @@
+/* ------------- <header> -------------*/
+#mainTitle{
+    text-align: center;
+}
+
+#mainTitle a{
+    text-decoration: none;
+    color: black;
+}
