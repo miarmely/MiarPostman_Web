@@ -1,0 +1,77 @@
+/* ------------- div ---------------*/
+div{
+    border-style:solid;
+}
+
+#container{
+    height:700px
+}
+
+#menu_left{
+    float:left;
+    width: 49.75%;
+}
+
+#menu_right{
+    float:right;
+    width:49.75%;
+}
+
+
+
+/* ------------- 1) <header> -------------*/
+header{
+    border-style:solid;
+}
+
+h1{
+    text-align: center;
+}
+
+/* ------------- 2) <nav>  ---------*/
+nav{
+    margin:auto
+}
+
+nav ul{
+    list-style-type: none;
+    height: 25px; 
+    padding: 0;  /* reset */
+    font-size:18px
+}
+
+nav li{
+    float:left;
+    padding:10px 15px;
+    text-align:center;
+}
+
+nav li:hover{
+    color: orange;
+    background: black;
+    cursor:pointer;
+}
+
+/* --------- 2.1) left menu --------*/
+
+#menu_left ul{
+    float:left; 
+
+}
+
+/* --------- 2.2) right menu --------*/
+#pic_user{
+    width:20px;
+    height:20px;
+}
+
+#menu_right label{
+    position:relative;
+    bottom:2px;
+    left:2px;
+    text-align: center;
+}
+
+#menu_right ul{
+    float:right;
+}
