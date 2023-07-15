@@ -13,6 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/nav_get.js"></script>
     </head>
+
     <body>
         <div id="container">
             <header>
@@ -37,7 +38,7 @@
                             <label for="user_profile">USER</label>
                         </li>
                     </ul>
-    
+
                 </div>
             </nav>
             <section>
@@ -45,7 +46,13 @@
                     <div id="display">
                         <table>
                             <thead>
-                                <tr id="head"><th>Id</th><th>Full Name</th><th>Last Name</th><th>Job</th><th>Salary</th></tr>
+                                <tr id="head">
+                                    <th>Id</th>
+                                    <th>Full Name</th>
+                                    <th>Last Name</th>
+                                    <th>Job</th>
+                                    <th>Salary</th>
+                                </tr>
                             </thead>
                             <tbody>
                             </tbody>
@@ -59,41 +66,44 @@
                         <table style="border-style: solid;">
                             <tbody>
                                 <tr>
-                                    <td><label for="id">Id:</label></td>
-                                    <td><input type="text" id="id" name="id"></td>
+                                    <td><label for="inpt_id">Id:</label></td>
+                                    <td><input type="number" id="inpt_id" name="id"></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="fullName">Full Name:</label></td>
-                                    <td><input type="text" id="fullName" name="fullName"></td>
+                                    <td><label for="inpt_fullName">Full Name:</label></td>
+                                    <td><input type="text" id="inpt_fullName" name="fullName"></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="id">Last Name:</label></td>
-                                    <td><input type="text" id="id" name="id"></td>
+                                    <td><label for="inpt_lastName">Last Name:</label></td>
+                                    <td><input type="text" id="inpt_lastName" name="lastName"></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="id">Job:</label></td>
-                                    <td><input type="text" id="id" name="id"></td>
+                                    <td><label for="inpt_job">Job:</label></td>
+                                    <td><input type="text" id="inpt_job" name="job"></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="id">Salary:</label></td>
-                                    <td><input type="text" id="id" name="id"></td>
+                                    <td><label for="inpt_salary">Salary:</label></td>
+                                    <td><input type="number" id="inpt_salary" name="salary"></td>
                                 </tr>
                             </tbody>
                             <tfoot>
-                                <tr><td colspan="2"><button type="button" id="btn_display">Display</button></td></tr>
+                                <tr>
+                                    <td colspan="2"><button type="button" id="btn_display">Display</button></td>
+                                </tr>
                             </tfoot>
                         </table>
-                        
                     </div>
                 </div>
             </aside>
-    
             <footer>
-    
+
             </footer>
         </div>
+
+        <script>
+            
+        </script>
+        
     </body>
-
 </html>
-
 </DOCTYPE>
