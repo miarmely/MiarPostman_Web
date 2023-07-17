@@ -14,53 +14,46 @@ $(function () {
                         <td>${response.salary}</td><tr>
                     `);
                 },
-                404: function (response) {
+                404: function () {
                     alert(`Id:${id} Not Found!..`);
                 }
             }
         });
     }
 
-    function getAllPersonal(table) {
+    function getPersonals() {
+        let id = $("#inpt_id").val() ? $("#inpt_id").val() : -1;
+        let fullName = $("#inpt_fullName").val() ? $("#inpt_fullName").val() : -1
+        let lastName = $("#inpt_lastName").val() ? $("#inpt_lastName").val() : -1
+        let job = $("#inpt_job").val() ? $("#inpt_job").val() : -1
+        let salary = $("#inpt_salary").val() ? $("#inpt_salary").val() : -1
+        let table = $("#display tbody");
+
+        table.empty(); // reset table
+
         $.ajax({
             type: "GET",
-            url: "http://localhost:5282/api/employee",
+            url: `http://localhost:5282/api/employee?id=${id}&fullName=${fullName}&lastName=${lastName}&job=${job}&salary=${salary}`,
             datatype: "json",
             statusCode: {
                 200: function (response) {
-                    response.forEach(function(personal){
+                    response.forEach(function (personal) {
                         table.append(`<tr><td>${personal.id}</td>
                             <td>${personal.fullName}</td>
                             <td>${personal.lastName}</td>
                             <td>${personal.job}</td>
                             <td>${personal.salary}</td></tr>
                         `);
-                    });    
+                    });
                 },
                 404: function () {
-                    alert("Database Is Empty!..");
+                    alert("Not Matched!..");
                 }
             }
         });
     }
 
     $("#btn_display").click(function () {
-        let id = $("#inpt_id").val();
-        let fullName = $("#inpt_fullName").val();
-        let lastName = $("#inpt_lastName").val();
-        let job = $("#inpt_job").val();
-        let salary = $("#inpt_salary").val();
-        let table = $("#display tbody");
-
-        table.empty(); // reset table
-
-        // when id entered
-        if (id) getPersonalById(id, table);
-
-        // when id didn't enter
-        else {
-            // when all inputs is empty
-            if (!fullName && !lastName && !job && !salary) getAllPersonal(table)
-        }
+        getPersonals();
     });
 });

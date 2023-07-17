@@ -29,7 +29,12 @@ div{
 #side_menu{
     float: right;
     min-height: 500px;
-    
+}
+
+#side_menu td{
+    padding-bottom:5px;
+
+
 }
 
 /* ---- 5.1) <table> ---- */
