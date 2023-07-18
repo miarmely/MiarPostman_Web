@@ -5,9 +5,11 @@ div{
 
 /* -------- 4) <section> -------*/
 #main{
+    margin-top:1%;
+    margin-left:10%;
     float: left;
     min-height: 500px;
-    width: 81%;
+    width: 61%;
 }
 
 /* ----- 4.1) <table> ------ */
@@ -27,19 +29,18 @@ div{
 
 /* ------- 5) <aside> --------- */
 #side_menu{
+    margin-top:1%;
+    margin-right:10%;
     float: right;
     min-height: 500px;
 }
 
 #side_menu td{
     padding-bottom:5px;
-
-
 }
 
 /* ---- 5.1) <table> ---- */
 #input table{
-    margin: auto;
     font-size: 18px;
 }
 

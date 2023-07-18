@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Employees</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Add New Employees To Database">
+        <meta name="keywords" content="add, add new employees, add amployee, new, employees, new employees">
+        <meta author="miarmely">
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/nav.css">
+        <link rel="stylesheet" href="../css/nav_post.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/nav_post.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="mainTitle">
+                    <h1><a href="nav_post.html">Add Employees</a></h1>
+                </div>
+            </header>
+            <nav>
+                <div id="menu_left">
+                    <ul>
+                        <li><a href="index.html">HOMEPAGE</a></li>
+                        <li><a href="nav_get.html">GET</a></li>
+                        <li><a href="nav_post.html">POST</a></li>
+                        <li><a href="">PUT</a></li>
+                        <li><a href="">DELETE</a></li>
+                    </ul>
+                </div>
+                <div id="menu_right">
+                    <ul>
+                        <li>
+                            <img id="pic_user" src="../pictures/blank_profile.jpg" alt="profile picture">
+                            <span>USER</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <section>
+                <div id="container" style="height:800px; margin-left: 10%; margin-right: 10%; margin-top:1%">
+                    <div id="input" style="float:left; width: 29%">
+                        <form>
+                            <table> 
+                                <tbody>
+                                    <tr><td><label for="inpt_fullName">Full Name:</label></td>
+                                        <td><input type="text" id="inpt_fullName" name="fullName" required></input></td>
+                                    </tr>
+                                    <tr><td><label for="inpt_lastName">Last Name:</label></td>
+                                        <td><input type="text" id="inpt_lastName" name="lastName" required></input></td>
+                                    </tr>
+                                    <tr><td><label for="inpt_job">Job:</label></td>
+                                        <td><input type="text" id="inpt_job" name="job" required></input></td>
+                                    </tr>
+                                    <tr><td><label for="inpt_salary">Salary:</label></td>
+                                        <td><input type="text" id="inpt_salary" name="salary" required></input></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr style="text-align: center"><td colspan="2"><button type="submit" id="btn_save">Save</button></td></tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                    <div id="display">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th><th>Full Name</th><th>Last Name</th><th>Job</th><th>Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <aside>
+
+            </aside>
+            <footer>
+
+            </footer>
+        </div>
+
+    </body>
+</html>

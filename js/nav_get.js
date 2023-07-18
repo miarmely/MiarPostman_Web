@@ -22,11 +22,11 @@ $(function () {
     }
 
     function getPersonals() {
-        let id = $("#inpt_id").val() ? $("#inpt_id").val() : -1;
-        let fullName = $("#inpt_fullName").val() ? $("#inpt_fullName").val() : -1
-        let lastName = $("#inpt_lastName").val() ? $("#inpt_lastName").val() : -1
-        let job = $("#inpt_job").val() ? $("#inpt_job").val() : -1
-        let salary = $("#inpt_salary").val() ? $("#inpt_salary").val() : -1
+        let id = $("#inpt_id").val().trim() ? $("#inpt_id").val().trim() : -1;
+        let fullName = $("#inpt_fullName").val().trim() ? $("#inpt_fullName").val().trim() : -1
+        let lastName = $("#inpt_lastName").val().trim() ? $("#inpt_lastName").val().trim() : -1
+        let job = $("#inpt_job").val().trim() ? $("#inpt_job").val().trim() : -1
+        let salary = $("#inpt_salary").val().trim() ? $("#inpt_salary").val().trim() : -1
         let table = $("#display tbody");
 
         table.empty(); // reset table
@@ -38,7 +38,8 @@ $(function () {
             statusCode: {
                 200: function (response) {
                     response.forEach(function (personal) {
-                        table.append(`<tr><td>${personal.id}</td>
+                        table.append(
+                            `<tr><td>${personal.id}</td>
                             <td>${personal.fullName}</td>
                             <td>${personal.lastName}</td>
                             <td>${personal.job}</td>
