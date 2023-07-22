@@ -34,8 +34,8 @@ div{
     bottom:10px;
 }
 
-/* ----- 1.2.1) save button -----*/
-#btn_save{
+/* ----- 1.2.1) buttons -----*/
+.input_button{
     font-size: 15px;
     padding: 5px 20px;
 }

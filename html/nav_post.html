@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="../css/nav.css">
         <link rel="stylesheet" href="../css/nav_post.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="../js/nav_post.js"></script>
+        <script type="module" src="../js/nav_post.js"></script>
+        <script type="module" src="../js/library.js"></script> 
     </head>
     <body>
         <div id="container">
@@ -59,7 +60,12 @@
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                    <tr style="text-align: center"><td colspan="2"><button type="submit" id="btn_save">Save</button></td></tr>
+                                    <tr style="text-align: center">
+                                        <td colspan="2">
+                                            <button type="submit" id="btn_save" class="input_button">Save</button>
+                                            <button type="button" id="btn_back" class="input_button">Back</button>
+                                        </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </form>
