@@ -2,6 +2,7 @@ import {dateTimeFormatter} from "./library.js";
 
 $(function () {
     fillTable();
+    fillSelect();
 
     function fillTable(){
         let todayDate = new Date().toLocaleDateString();
@@ -27,7 +28,17 @@ $(function () {
         })
     }
 
-    $("#input form").submit(function (event) {
+    function fillSelect(){
+        let roleSelect = $("#slct_role1");
+        roleSelect.append(
+            `<option>Admin</option>
+            <option>Employee</option>
+            <option>Manager</option>`
+        );
+    }
+
+
+    $("#input form").submit(function (event) {  // when save button clicked
         event.preventDefault();  // for to hide parameters on route.
         
         // set variables for ajax
@@ -65,4 +76,45 @@ $(function () {
             }
         });
     })
+
+    let roleCounter = 1;  // for to set id of selects
+    let roleLimit = $("#slct_role1 option").length
+    $("#btn_newRole").click(function(){
+        roleCounter+=1;
+        let table = $("#input tbody");
+        let id = `slct_role${roleCounter}`;
+
+        table.append(`
+            <tr><td>Role ${roleCounter}:</td>
+                <td><select id=${id}>
+                        <option>Admin</option>
+                        <option>Employee</option>
+                        <option>Manager</option>
+                    </select>
+                </td>
+            </tr>`
+        )
+        
+        // disable new role button
+        if(roleCounter == roleLimit)   
+            $("#btn_newRole").attr("disabled", ""); 
+        
+        // show "- Delete Role" button
+        $("#btn_deleteRole").removeAttr("hidden");
+    });
+
+    $("#btn_deleteRole").click(function(){
+        $("#input tbody tr:last-child").remove()
+        
+        // enable "+ New Role" button
+        if(roleCounter == roleLimit)
+            $("#btn_newRole").removeAttr("disabled");
+
+        roleCounter-=1;
+        
+        // hide "- Delete Role" button.
+        if(roleCounter == 1)  
+            $("#btn_deleteRole").attr("hidden", "");
+
+    });
 });
