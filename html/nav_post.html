@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../css/nav.css">
         <link rel="stylesheet" href="../css/nav_post.css">
         <link rel="stylesheet" href="../css/tools.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script type="module" src="../js/nav_post.js"></script>
         <script type="module" src="../js/library.js"></script> 
@@ -27,9 +28,9 @@
                     <ul>
                         <li><a href="index.html">HOMEPAGE</a></li>
                         <li><a href="nav_get.html">GET</a></li>
-                        <li><a href="nav_post.html">POST</a></li>
-                        <li><a href="">PUT</a></li>
-                        <li><a href="">DELETE</a></li>
+                        <li><a href="">POST</a></li>
+                        <li><a href="#">PUT</a></li>
+                        <li><a href="#">DELETE</a></li>
                     </ul>
                 </div>
                 <div id="menu_right">
@@ -60,7 +61,7 @@
                                         <td><input type="text" id="inpt_salary" name="salary" required></input></td>
                                     </tr>
                                     <tr><td>Role 1:</td>
-                                        <td><select id="slct_role1" required>
+                                        <td><select id="slct_role1" class="role_select" required>
                                             </select>
                                         </td>
                                     </tr>
@@ -83,7 +84,14 @@
                     <div id="display">
                         <table>
                             <thead>
-                                <tr><th>Id</th><th>Full Name</th><th>Last Name</th><th>Job</th><th>Salary</th><th>Register Date</th></tr>
+                                <tr><th>Id</th>
+                                    <th>Full Name</th>
+                                    <th>Last Name</th>
+                                    <th>Job</th>
+                                    <th>Salary</th>
+                                    <th>Roles</th>
+                                    <th>Register Date</th>
+                                </tr>
                             </thead>
                             <tbody>
                             </tbody>

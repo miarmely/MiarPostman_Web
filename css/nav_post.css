@@ -51,13 +51,6 @@ div{
     padding-right: 30px;
 }
 
-/* ---- 1.2.1) <select> ---- */
-#input select{
-    min-width:100%;
-    font-size:14px;
-    min-height:23px;
-}
-
 /* ----- 1.2.2) <button> -----*/
 .input_button{
     font-size: 15px;

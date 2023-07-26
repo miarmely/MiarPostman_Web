@@ -3,13 +3,14 @@
     <head>
         <title>Display Employees</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Display Employees On Database">
         <meta name="keywords" content="display, employee, employees, database">
         <meta author="miarmely">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/nav.css">
         <link rel="stylesheet" href="../css/nav_get.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script type="module" src="../js/nav_get.js"></script>
         <script type="module" src="../js/library.js"></script> 
@@ -25,10 +26,10 @@
                 <div id="menu_left">
                     <ul>
                         <li><a href="index.html">HOMEPAGE</a></li>
-                        <li><a href="nav_get.html">GET</a></li>
+                        <li><a href="">GET</a></li>
                         <li><a href="nav_post.html">POST</a></li>
-                        <li><a href="">PUT</a></li>
-                        <li><a href="">DELETE</a></li>
+                        <li><a href="#">PUT</a></li>
+                        <li><a href="#">DELETE</a></li>
                     </ul>
                 </div>
                 <div id="menu_right">
@@ -52,6 +53,7 @@
                                     <th>Last Name</th>
                                     <th>Job</th>
                                     <th>Salary</th>
+                                    <th>Roles</th>
                                     <th>Register Date</th>
                                 </tr>
                             </thead>
@@ -85,6 +87,12 @@
                                 <tr>
                                     <td><label for="inpt_salary">Salary:</label></td>
                                     <td><input type="number" id="inpt_salary" name="salary"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="slct_role">Role</label></td>
+                                    <td><select id="slct_role", class="role_select">
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label for="inpt_registerDate">Register Date:</label></td>

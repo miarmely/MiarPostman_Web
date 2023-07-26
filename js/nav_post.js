@@ -1,4 +1,4 @@
-import {dateTimeFormatter} from "./library.js";
+import {dateTimeFormatter, listToString} from "./library.js";
 
 $(function () {
     let roleCounter = 1;  // for to set id of selects
@@ -9,23 +9,37 @@ $(function () {
     
 
     function fillTable(){
-        let todayDate = new Date().toLocaleDateString();
         let table = $("#display tbody")
+        let queryData = {
+            id: -1,
+            fullName: "-1",
+            lastName: "-1",
+            job: "-1",
+            salary: "-1",
+            registerDate: new Date().toLocaleDateString(),
+            roles: []
+        }
         
         $.ajax({
             type: "GET",
-            url: `http://localhost:5282/api/employee?id=-1&fullName=-1&lastName=-1&job=-1&salary=-1&registerDate=${todayDate}`,
+            url: `http://localhost:5282/api/employee`,
+            traditional: true,
+            data: queryData,
             dataType: "json",
             statusCode: {
                 200: function(response) {
                     response.forEach(function(personal){
+                        let roleNames = listToString(personal.roles, 4);
+                        
                         table.prepend(
                             `<tr><td>${personal.id}</td>
                             <td>${personal.fullName}</td>
                             <td>${personal.lastName}</td>
                             <td>${personal.job}</td>
                             <td>${personal.salary} TL</td>
-                            <td>${dateTimeFormatter(personal.registerDate)}</td></tr>`)
+                            <td>${roleNames}</td>
+                            <td>${dateTimeFormatter(personal.registerDate)}</td></tr>`
+                        )
                     })
                 },
             }
@@ -41,7 +55,7 @@ $(function () {
             url: "http://localhost:5282/api/role",
             datatype: "json",
             statusCode: {
-                200: function(response){  // add roles to Role 1 Combobox
+                200: function(response){  
                     response.forEach(function(role){
                         slct_role1.append(
                             `<option>${role.roleName}</option>`
@@ -59,6 +73,22 @@ $(function () {
     }
 
 
+    function resetRoles(){
+        $("#btn_deleteRole").attr("hidden", "");
+
+        // remove role selects
+        for(let no=roleCounter; no>1; no-=1)
+            $(`#input tbody tr:last-child`).remove();
+
+        // reset
+        roleCounter=1;
+        $("#slct_role1").val("");
+        
+        // enable new role button
+        $("#btn_newRole").removeAttr("disabled");
+    }
+
+
     $("#input form").submit(function (event) {  // when save button clicked
         event.preventDefault();  // for to hide parameters on route
         let table = $("#display tbody");
@@ -70,7 +100,7 @@ $(function () {
                 $(`#slct_role${no}`).val()
             );
 
-        // set variables for ajax
+        // set data of ajax
         let formData = {
             "fullName": $("#inpt_fullName").val(),
             "lastName": $("#inpt_lastName").val(),
@@ -80,6 +110,7 @@ $(function () {
             "roles" : roles
         }
 
+        // send request to api/employee
         $.ajax({
             type: "POST",
             url: "http://localhost:5282/api/employee",
@@ -88,16 +119,21 @@ $(function () {
             dataType: "json",
             statusCode: {
                 200: function (response) {
+                    let roleNames = listToString(response.roles, 4);
+                    
                     table.prepend(
                         `<tr><td>${response.id}</td>
                         <td>${response.fullName}</td>
                         <td>${response.lastName}</td>
                         <td>${response.job}</td>
                         <td>${response.salary} TL</td>
+                        <td>${roleNames}</td>
                         <td>${dateTimeFormatter(response.registerDate)}</td></tr>`
                     )
 
-                    $("#input form")[0].reset();
+                    // reset
+                    $("#input form")[0].reset();  // inputs
+                    resetRoles();
                 },
                 400: function(){
                     alert("Please Write True Type On Inputs.")
@@ -125,7 +161,7 @@ $(function () {
         // add select to table
         table.append(`
             <tr><td>Role ${roleCounter}:</td>
-                <td><select id=${id} required>
+                <td><select id=${id} class="role_select"required>
                     </select>
                 </td>
             </tr>`

@@ -1,6 +1,29 @@
-import {dateTimeFormatter} from "./library.js";
+import { dateTimeFormatter, listToString } from "./library.js";
 
 $(function () {
+    fillRole();
+
+    function fillRole() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:5282/api/role",
+            datatype: "json",
+            statusCode: {
+                200: function (response) {
+                    response.forEach(function (role) {
+                        $("#slct_role").append(
+                            `<option>${role.roleName}</option>`
+                        )
+                    });
+
+                    $("#slct_role").val("");  // reset
+                }
+            }
+        })
+
+    }
+
+
     function getPersonals() {
         let table = $("#display tbody");
         table.empty();  // reset table
@@ -12,26 +35,29 @@ $(function () {
             job: $("#inpt_job").val().trim() ? $("#inpt_job").val().trim() : -1,
             salary: $("#inpt_salary").val().trim() ? $("#inpt_salary").val().trim() : -1,
             registerDate: $("#inpt_registerDate").val().trim() ? $("#inpt_registerDate").val().trim() : -1,
+            roles: $("#slct_role").val() ? [$("#slct_role").val()] : []
         }
 
         $.ajax({
             type: "GET",
             url: "http://localhost:5282/api/employee",
-            //url: `http://localhost:5282/api/employee?id=${id}&fullName=${fullName}&lastName=${lastName}&job=${job}&salary=${salary}&registerDate=${registerDate}`,
-            datatype: "json",
             traditional: true,
             data: queryData,
+            datatype: "json",
             statusCode: {
                 200: function (response) {
                     response.forEach(function (personal) {
+                        let roleNames = listToString(personal.roles, 4);
+
                         table.prepend(
                             `<tr><td>${personal.id}</td>
                             <td>${personal.fullName}</td>
                             <td>${personal.lastName}</td>
                             <td>${personal.job}</td>
                             <td>${personal.salary} TL</td>
-                            <td>${dateTimeFormatter(personal.registerDate)}</td></tr>
-                        `);
+                            <td>${roleNames}</td>
+                            <td>${dateTimeFormatter(personal.registerDate)}</td></tr>`
+                        );
                     });
                 },
                 404: function () {

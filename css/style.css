@@ -6,3 +6,11 @@ div{
 #container{
     height:700px
 }
+
+
+/* ---- input <select> ---- */
+.role_select{
+    min-width:100%;
+    font-size:14px;
+    min-height:23px;
+}
