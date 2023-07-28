@@ -1,0 +1,11 @@
+/* -------- 4) <section> -------*/
+#div_display{
+    float:left;
+    width:71.3%;
+}
+
+/* ------- 5) <aside> --------- */
+aside{
+    float:right;
+    width:27.5%
+}

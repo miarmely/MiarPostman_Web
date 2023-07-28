@@ -1,16 +1,16 @@
-import {dateTimeFormatter, listToString} from "./library.js";
+import {dateTimeFormatter, listToString} from "./main.js"
 
 $(function () {
     let roleCounter = 1;  // for to set id of selects
     let roleLimit = 0;
     
     fillTable();
-    fillRole1("slct_role1");
+    fillRole1();
     
 
     function fillTable(){
-        let table = $("#display tbody")
-        let queryData = {
+        let table = $("#div_display tbody")
+        let getData = {
             id: -1,
             fullName: "-1",
             lastName: "-1",
@@ -21,10 +21,10 @@ $(function () {
         }
         
         $.ajax({
-            type: "GET",
-            url: `http://localhost:5282/api/employee`,
+            method: "GET",
+            url: `http://localhost:5282/api/employee/condition`,
             traditional: true,
-            data: queryData,
+            data: getData,
             dataType: "json",
             statusCode: {
                 200: function(response) {
@@ -43,7 +43,7 @@ $(function () {
                     })
                 },
             }
-        })
+        });
     }
 
 
@@ -51,7 +51,7 @@ $(function () {
         let slct_role1 = $(`#slct_role1`);
         
         $.ajax({
-            type: "GET",
+            method: "GET",
             url: "http://localhost:5282/api/role",
             datatype: "json",
             statusCode: {
@@ -69,7 +69,7 @@ $(function () {
                     $("#btn_newRole").removeAttr("disabled");
                 }      
             }
-        });    
+        });
     }
 
 
@@ -78,7 +78,7 @@ $(function () {
 
         // remove role selects
         for(let no=roleCounter; no>1; no-=1)
-            $(`#input tbody tr:last-child`).remove();
+            $(`#div_input tbody tr:last-child`).remove();
 
         // reset
         roleCounter=1;
@@ -89,9 +89,9 @@ $(function () {
     }
 
 
-    $("#input form").submit(function (event) {  // when save button clicked
+    $("#div_input form").submit(function (event) {  // when save button clicked
         event.preventDefault();  // for to hide parameters on route
-        let table = $("#display tbody");
+        let table = $("#div_display tbody");
 
         // add roles to list
         let roles = [];
@@ -112,7 +112,7 @@ $(function () {
 
         // send request to api/employee
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "http://localhost:5282/api/employee",
             contentType: "application/json",
             data: JSON.stringify(formData),
@@ -132,7 +132,7 @@ $(function () {
                     )
 
                     // reset
-                    $("#input form")[0].reset();  // inputs
+                    $("#div_input form")[0].reset();  // inputs
                     resetRoles();
                 },
                 400: function(){
@@ -155,7 +155,7 @@ $(function () {
         $(`#slct_role${roleCounter}`).attr("disabled", "");
 
         roleCounter+=1;
-        let table = $("#input tbody");
+        let table = $("#div_input tbody");
         let id = `slct_role${roleCounter}`;
         
         // add select to table
@@ -187,7 +187,7 @@ $(function () {
 
 
     $("#btn_deleteRole").click(function(){
-        $("#input tbody tr:last-child").remove()
+        $("#div_input tbody tr:last-child").remove()
         
         // enable "+ New Role" button
         if(roleCounter == roleLimit)

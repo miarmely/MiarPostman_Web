@@ -13,41 +13,47 @@ nav ul{
 }
 
 /* --------- 1.1) left menu --------*/
-#menu_left{
+#div_menu_left{
     float:left;
     width:49.75%;
     height:47px
 }
 
-#menu_left li{
+#div_menu_left li{
     float:left;
 }
 
-#menu_left a{
+#div_menu_left a{
     text-decoration:none;
     color:black;
     padding:15px 20px;
 }
 
-#menu_left a:hover{
+#div_menu_left a:hover{
     color: orange;
     background: black;
 }
 
 /* --------- 1.2) right menu --------*/
-#menu_right{
+#div_menu_right{
     float:right;
     width:49.75%;
     height:47px
 }
 
-#menu_right li{
+#div_menu_right li{
     float:right;
 }
 
-#menu_right ul{
+#div_menu_right ul{
     float:right;
     padding-right: 20px;
+}
+
+#div_menu_right span{
+    position:relative;
+    bottom:22px;
+    text-align: center;
 }
 
 #pic_user{
@@ -55,10 +61,4 @@ nav ul{
     height:40px;
     position: relative;
     bottom: 9px;
-}
-
-#menu_right span{
-    position:relative;
-    bottom:22px;
-    text-align: center;
 }

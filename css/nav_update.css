@@ -1,0 +1,53 @@
+/* ---------- 1) <section> ---------- */
+#div_page{
+    min-height: 700px;
+}
+
+section{
+    float: right;
+    width: 71.3%;
+}
+
+/* div_display_old <table> */
+#div_display_old{
+    border-style: none;
+    margin-bottom: 152.5px;   
+}
+
+/* div_display_new <table> */
+#div_display_new{
+    border-style: none;
+}
+
+/* titles of div_display _old and _new tables*/
+#div_display_old thead tr:first-child th,
+#div_display_new thead tr:first-child th
+{
+    padding-bottom:15px;
+    font-size:21px;
+}
+
+/* ---------- 2) <aside> ---------- */
+#div_input{
+    border-style:none;
+    float: left;
+    width: 27.5%;
+}
+
+/* btn_find */
+#div_input tbody tr:nth-child(2) td{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 60px;
+}
+
+#btn_find{
+    padding: 5px 50px;
+    font-size:15px    
+}
+
+/* titles of div_input table */
+#div_input th{
+    font-size:18px;
+    padding-bottom:15px;
+}

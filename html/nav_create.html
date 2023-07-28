@@ -1,50 +1,68 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Add Employees</title>
+        <title>Create Employee</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Add New Employees To Database">
-        <meta name="keywords" content="add, add new employees, add amployee, new, employees, new employees">
+        <meta name="description" content="Create New Employees With Http Post">
+        <meta name="keywords" content="create, create new employees, create employee, new, employees, new employees, http post, http, post">
         <meta author="miarmely">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/nav.css">
-        <link rel="stylesheet" href="../css/nav_post.css">
-        <link rel="stylesheet" href="../css/tools.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script type="module" src="../js/nav_post.js"></script>
-        <script type="module" src="../js/library.js"></script> 
+        <link rel="stylesheet" href="../css/body_header.css">
+        <link rel="stylesheet" href="../css/body_nav.css">
+        <link rel="stylesheet" href="../css/nav_create.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script type="module" src="../js/nav_create.js"></script>
+        <script type="module" src="../js/main.js"></script> 
     </head>
     <body>
-        <div id="container">
+        <div id="div_container">
             <header>
-                <div id="mainTitle">
-                    <h1><a href="nav_post.html">Add Employees</a></h1>
+                <div id="div_mainTitle">
+                    <h1><a href="nav_create.html">Create Employee</a></h1>
                 </div>
             </header>
             <nav>
-                <div id="menu_left">
+                <div id="div_menu_left">
                     <ul>
-                        <li><a href="index.html">HOMEPAGE</a></li>
-                        <li><a href="nav_get.html">GET</a></li>
-                        <li><a href="">POST</a></li>
-                        <li><a href="#">PUT</a></li>
+                        <li><a href="nav_homepage.html">HOMEPAGE</a></li>
+                        <li><a href="nav_create.html">CREATE</a></li>
+                        <li><a href="nav_display.html">DISPLAY</a></li>
+                        <li><a href="nav_update.html">UPDATE</a></li>
                         <li><a href="#">DELETE</a></li>
                     </ul>
                 </div>
-                <div id="menu_right">
+                <div id="div_menu_right">
                     <ul>
                         <li>
-                            <img id="pic_user" src="../pictures/blank_profile.jpg" alt="profile picture">
+                            <img id="pic_user" src="../pictures/blank_profile.jpg", alt="profile picture">
                             <span>USER</span>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <section>
-                <div id="page">
-                    <div id="input">
+            <div id="div_page">
+                <section>
+                    <div id="div_display" class="display_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Full Name</th>
+                                    <th>Last Name</th>
+                                    <th>Job</th>
+                                    <th>Salary</th>
+                                    <th>Roles</th>
+                                    <th>Register Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <aside>
+                    <div id="div_input" class="input_table">
                         <form>
                             <table> 
                                 <tbody>
@@ -73,37 +91,16 @@
                                         </td>
                                     </tr>
                                     <tr><td colspan="2">
-                                            <button type="submit" id="btn_save" class="input_button">Save</button>
-                                            <button type="button" id="btn_back" class="input_button">Back</button>
+                                            <button type="submit" id="btn_save">Save</button>
+                                            <button type="button" id="btn_back">Back</button>
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </form>
                     </div>
-                    <div id="display">
-                        <table>
-                            <thead>
-                                <tr><th>Id</th>
-                                    <th>Full Name</th>
-                                    <th>Last Name</th>
-                                    <th>Job</th>
-                                    <th>Salary</th>
-                                    <th>Roles</th>
-                                    <th>Register Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <aside>
-
-            </aside>
+                </aside>
             <footer>
-
             </footer>
         </div>
         <script>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Display Employees</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Display Employees Working At Factory">
+        <meta name="keywords" content="display, employee, employees, working at factory, factory, employees at working at factory">
+        <meta author="miarmely">
+        <link rel="stylesheet" href="../css/body_header.css">
+        <link rel="stylesheet" href="../css/body_nav.css">
+        <link rel="stylesheet" href="../css/nav_display.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script type="module" src="../js/nav_display.js"></script>
+        <script type="module" src="../js/main.js"></script> 
+    </head>
+    <body>
+        <div id="div_container">
+            <header>
+                <div id="div_mainTitle">
+                    <h1><a href="nav_display.html">Display Employees</a></h1>
+                </div>
+            </header>
+            <nav>
+                <div id="div_menu_left">
+                    <ul>
+                        <li><a href="nav_homepage.html">HOMEPAGE</a></li>
+                        <li><a href="nav_create.html">CREATE</a></li>
+                        <li><a href="nav_display.html">DISPLAY</a></li>
+                        <li><a href="nav_update.html">UPDATE</a></li>
+                        <li><a href="#">DELETE</a></li>
+                    </ul>
+                </div>
+                <div id="div_menu_right">
+                    <ul>
+                        <li>
+                            <img id="pic_user" src="../pictures/blank_profile.jpg", alt="profile picture">
+                            <span>USER</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="div_page">
+                <section>
+                    <div id="div_display" class="display_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Full Name</th>
+                                    <th>Last Name</th>
+                                    <th>Job</th>
+                                    <th>Salary</th>
+                                    <th>Roles</th>
+                                    <th>Register Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <aside>
+                    <div id="div_input" class="input_table">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><label for="inpt_id">Id:</label></td>
+                                        <td><input type="number" id="inpt_id" name="id"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_fullName">Full Name:</label></td>
+                                        <td><input type="text" id="inpt_fullName" name="fullName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_lastName">Last Name:</label></td>
+                                        <td><input type="text" id="inpt_lastName" name="lastName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_job">Job:</label></td>
+                                        <td><input type="text" id="inpt_job" name="job"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_salary">Salary:</label></td>
+                                        <td><input type="number" id="inpt_salary" name="salary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="slct_role">Role:</label></td>
+                                        <td><select id="slct_role", class="role_select">
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_registerDate">Register Date:</label></td>
+                                        <td><input type="date" id="inpt_registerDate" name="registerDate"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr><td colspan="2"><button type="button" id="btn_display" class="input_form_button">Display</button></td></tr>
+                                </tfoot>
+                            </table>
+                    </div>
+                </aside>
+            </div>
+            <footer>
+            </footer>
+        </div>
+        <script>
+        </script>
+    </body>
+</html>

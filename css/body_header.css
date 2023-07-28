@@ -1,9 +1,9 @@
 /* ------------- <header> -------------*/
-#mainTitle{
+#div_mainTitle{
     text-align: center;
 }
 
-#mainTitle a{
+#div_mainTitle a{
     text-decoration: none;
     color: black;
 }

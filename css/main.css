@@ -1,0 +1,98 @@
+/* ----- <div> ----- */
+div{
+    border-style: solid;
+}
+
+#div_container{
+    height:0px;
+}
+
+#div_page{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%
+}
+
+/* ----- div_input <form> ----- */
+.form{
+    padding-bottom:5px;
+}
+
+
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  input_table  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+.input_table table{
+    border-style: solid;
+    width: 100%;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.input_table td{
+    padding-bottom:4px;
+}
+
+/* <label> */
+.input_table tbody label{
+    margin-right: 25px;
+}
+
+/* <input> */
+.input_table input{
+    font-size: 14.5px;
+}
+
+.input_table input[type="text"],
+.input_table input[type="number"]
+{
+    min-width:95.5%;
+}
+
+.input_table input[type="date"]
+{
+    min-width:97.5%;
+}
+
+/* <select> */
+.input_table select{
+    min-width: 100%;
+    font-size: 14.55px;
+    min-height: 22px;
+}
+
+/* <tfoot> */
+.input_table tfoot{
+    text-align: center;
+}
+
+/* <button> */
+.input_table tfoot td:first-child{
+    padding-top: 30px;
+    padding-bottom:5px;
+}
+
+.input_table tfoot tr:last-child button{
+    padding: 5px 40px;
+    font-size:15px
+}
+
+.input_table thead th{
+    padding-bottom: 18px;
+}
+
+
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  display <table>  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+.display_table table{
+    width: 100%;
+    text-align: center;
+    border-style: solid;
+}
+
+.display_table thead th{
+    border-style: solid;
+}
+
+.display_table tbody td{
+    border-style: double;
+}
