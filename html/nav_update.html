@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="../css/main.css">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script type="module" src="../js/nav_update.js"></script>
-        <script type="module" src="../js/main.js"></script>
     </head>
     <body>
         <div id="div_container">
@@ -94,35 +93,34 @@
                                 <tbody>
                                     <tr>
                                         <td><label for="inpt_id">Id:</label></td>
-                                        <td><input type="number" id="inpt_id" name="id"></td>
+                                        <td><input type="number" id="inpt_id" name="id" required></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
-                                            <button type="button" id="btn_find">Find</button>
-                                        </td>
+                                        <td colspan="2"><button type="button" id="btn_find">Find</button></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2">UPDATE MENU</th>
                                     </tr>
                                     <tr>
                                         <td><label for="inpt_fullName">Full Name:</label></td>
-                                        <td><input type="text" id="inpt_fullName" name="fullName"></td>
+                                        <td><input type="text" id="inpt_fullName" name="fullName" required></td>
                                     </tr>
                                     <tr>
                                         <td><label for="inpt_lastName">Last Name:</label></td>
-                                        <td><input type="text" id="inpt_lastName" name="lastName"></td>
+                                        <td><input type="text" id="inpt_lastName" name="lastName" required></td>
                                     </tr>
                                     <tr>
                                         <td><label for="inpt_job">Job:</label></td>
-                                        <td><input type="text" id="inpt_job" name="job"></td>
+                                        <td><input type="text" id="inpt_job" name="job" required></td>
                                     </tr>
                                     <tr>
                                         <td><label for="inpt_salary">Salary:</label></td>
-                                        <td><input type="text" id="inpt_salary" name="salary"></td>
+                                        <td><input type="number" id="inpt_salary" name="salary" required></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="slct_role">Role 1:</label></td>
-                                        <td><select>
+                                        <td><label for="slct_role1">Role 1:</label></td>
+                                        <td>
+                                            <select id="slct_role1">
                                             </select>
                                         </td>
                                     </tr>
@@ -130,7 +128,13 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="2">
-                                            <button type="submit" id="btn_update" disabled>Update</button>
+                                            <button type="button" id="btn_newRole" class="role_button">+ New Role</button>
+                                            <button type="button" id="btn_deleteRole" class="role_button">- Delete Role</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button type="submit" id="btn_update">Update</button>
                                         </td>
                                     </tr>
                                 </tfoot>

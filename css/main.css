@@ -66,15 +66,22 @@ div{
     text-align: center;
 }
 
-/* <button> */
-.input_table tfoot td:first-child{
-    padding-top: 30px;
+/* role buttons */
+.input_table .role_button{
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* <button> at bottom */
+.input_table tfoot tr:last-child td{
+    padding-top: 35px;
     padding-bottom:5px;
 }
 
 .input_table tfoot tr:last-child button{
     padding: 5px 40px;
     font-size:15px
+    
 }
 
 .input_table thead th{

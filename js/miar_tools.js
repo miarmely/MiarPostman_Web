@@ -18,22 +18,3 @@ export function dateTimeFormatter(stringDate) {
 
     return `${dd}.${MM}.${yyyy} - ${HH}:${mm}`;
 }
-
-
-export function listToString(list, lineWordLimit) {  // list elements concate to one string.
-    let stringList = "";
-
-    for (let index in list) {
-        stringList += list[index];
-
-        // add new line
-        if (index != 0 && index % (lineWordLimit - 1) == 0)
-            stringList += "<br>";
-
-        // add comma
-        else if (index != list.length - 1)
-            stringList += ", ";
-    }
-
-    return stringList;
-}

@@ -1,34 +1,9 @@
-import { dateTimeFormatter, listToString } from "./main.js";
+import { dateTimeFormatter } from "./miar_tools.js";
+import { fillRole, roleListToString } from "./miar_role.js";
+
 
 $(function () {
-    fillRole();
-
-    function fillRole() {
-        $.ajax({
-            method: "GET",
-            url: "http://localhost:5282/api/role",
-            datatype: "json",
-            statusCode: {
-                200: function (response) {
-                    let slct_role = $("#slct_role");
-                    
-                    // add blank value
-                    slct_role.append(
-                        "<option></option>"
-                    );
-                    
-                    // add roles
-                    response.forEach(function (roles) {
-                        slct_role.append(
-                            `<option>${roles.roleName}</option>`
-                        )
-                    });
-
-                    $("#slct_role").val("");  // reset
-                }
-            }
-        });
-    }
+    fillRole("");
 
 
     function getPersonalsByCondition(getData) {
@@ -44,7 +19,7 @@ $(function () {
             statusCode: {
                 200: function (response) {
                     response.forEach(function (personal) {
-                        let roleNames = listToString(personal.roles, 4);
+                        let roleNames = roleListToString(personal.roles, 4);
 
                         // add table
                         table.prepend(
@@ -77,7 +52,7 @@ $(function () {
             statusCode: {
                 200: function(response){
                     response.forEach(function(person){
-                        let roleNames = listToString(person.roles);
+                        let roleNames = roleListToString(person.roles);
 
                         table.prepend(
                             `<tr><td>${person.id}</td>

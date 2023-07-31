@@ -1,8 +1,4 @@
 /* ---------- 1) <section> ---------- */
-#div_page{
-    min-height: 700px;
-}
-
 section{
     float: right;
     width: 71.3%;
@@ -10,13 +6,7 @@ section{
 
 /* div_display_old <table> */
 #div_display_old{
-    border-style: none;
     margin-bottom: 152.5px;   
-}
-
-/* div_display_new <table> */
-#div_display_new{
-    border-style: none;
 }
 
 /* titles of div_display _old and _new tables*/
@@ -29,7 +19,7 @@ section{
 
 /* ---------- 2) <aside> ---------- */
 #div_input{
-    border-style:none;
+    border-style: none;
     float: left;
     width: 27.5%;
 }
