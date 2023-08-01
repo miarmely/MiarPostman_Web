@@ -16,7 +16,6 @@ export function newRoleButton_Clicked() {
     $(`#slct_role${roleCounter}`).attr("disabled", "");
     roleCounter += 1;
 
-    //let table = $("#div_input tbody");
     let id = `slct_role${roleCounter}`;
 
     // add select to table
