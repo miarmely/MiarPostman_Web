@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html>
+<hmtl lang="en">
     <head>
-        <title>Create Employee</title>
+        <title>Delete Employees</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Create New Employees With Http Post">
-        <meta name="keywords" content="create, create new employees, create employee, new, employees, new employees, http post, http, post">
+        <meta name="description" content="Delete Employees With Http Delete Method.">
+        <meta name="keywords" content="delete employees, delete, employee, http, http delete, http delete method">
         <meta author="miarmely">
-        <link rel="stylesheet" href="../css/nav_create.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/body_header.css">
         <link rel="stylesheet" href="../css/body_nav.css">
         <link rel="stylesheet" href="../css/table_display.css">
         <link rel="stylesheet" href="../css/table_input.css">
+        <link rel="stylesheet" href="../css/nav_delete.css">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script type="module" src="../js/nav_create.js"></script>
+        <script type="module" src="../js/nav_delete.js"></script>
     </head>
     <body>
         <div id="div_container">
             <header>
                 <div id="div_mainTitle">
-                    <h1><a href="nav_create.html">Create Employee</a></h1>
+                    <h1><a href="nav_delete.html">Delete Employees</a></h1>
                 </div>
             </header>
             <nav>
@@ -49,7 +49,7 @@
                             <thead>
                                 <tr>
                                     <th colspan="7">
-                                        <span id="lbl_tableTitle">TODAY CREATED EMPLOYEES </span>
+                                        <span id="lbl_tableTitle">MATCHED EMPLOYEES </span>
                                         <span class="person_quantity">
                                             <i>
                                                 Quantity: 
@@ -76,38 +76,51 @@
                 <aside>
                     <div id="div_input" class="input_table">
                         <form>
-                            <table> 
+                            <table>
                                 <tbody>
-                                    <tr><td><label for="inpt_fullName">Full Name:</label></td>
-                                        <td><input type="text" id="inpt_fullName" name="fullName" required></input></td>
+                                    <tr>
+                                        <td><label for="inpt_id">Id:</label></td>
+                                        <td><input type="number" id="inpt_id" name="id"></td>
                                     </tr>
-                                    <tr><td><label for="inpt_lastName">Last Name:</label></td>
-                                        <td><input type="text" id="inpt_lastName" name="lastName" required></input></td>
+                                    <tr>
+                                        <td><label for="inpt_fullName">Full Name:</label></td>
+                                        <td><input type="text" id="inpt_fullName" name="fullName"></td>
                                     </tr>
-                                    <tr><td><label for="inpt_job">Job:</label></td>
-                                        <td><input type="text" id="inpt_job" name="job" required></input></td>
+                                    <tr>
+                                        <td><label for="inpt_lastName">Last Name:</label></td>
+                                        <td><input type="text" id="inpt_lastName" name="lastName"></td>
                                     </tr>
-                                    <tr><td><label for="inpt_salary">Salary:</label></td>
-                                        <td><input type="number" id="inpt_salary" name="salary" required></input></td>
+                                    <tr>
+                                        <td><label for="inpt_job">Job:</label></td>
+                                        <td><input type="text" id="inpt_job" name="job"></td>
                                     </tr>
-                                    <tr><td>Role 1:</td>
-                                        <td><select id="slct_role1" class="role_select" required></select></td>
+                                    <tr>
+                                        <td><label for="inpt_salary">Salary:</label></td>
+                                        <td><input type="number" id="inpt_salary" name="salary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="slct_role">Role:</label></td>
+                                        <td>
+                                            <select id="slct_role", class="role_select">
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inpt_registerDate">Register Date:</label></td>
+                                        <td><input type="date" id="inpt_registerDate" name="registerDate"></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">
-                                            <button type="button" id="btn_newRole" class="role_button" disabled>+ New Role</button>
-                                            <button type="button" id="btn_deleteRole" class="role_button" hidden>- Delete Role</button>
-                                        </td>
+                                        <td colspan="2"><button type="button" id="btn_find">Find</button></td>
                                     </tr>
-                                    <tr id="tr_lbl_result" hidden>
-                                        <td colspan="2" class="td_lbl_result"><span id="lbl_result"></span></td>
+                                    <tr>
+                                        <td colspan="2"><span class="lbl_result"></span></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <button type="submit" id="btn_save">Save</button>
-                                            <button type="button" id="btn_back">Back</button>
+                                            <button type="submit" id="btn_delete" disabled>Delete</button>
+                                            <button type="button" id="btn_back" disabled>Back</button>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -115,8 +128,12 @@
                         </form>
                     </div>
                 </aside>
+            </div>
             <footer>
             </footer>
+            <script>
+            </script>
         </div>
     </body>
-</html>
+</hmtl>
+

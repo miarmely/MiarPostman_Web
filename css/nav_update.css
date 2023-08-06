@@ -1,34 +1,16 @@
 /* ---------- 1) <section> ---------- */
-section{
-    float: right;
-    width: 71.3%;
-}
-
 /* div_display_old <table> */
 #div_display_old{
     margin-bottom: 152.5px;   
 }
 
-/* titles of div_display _old and _new tables*/
-#div_display_old thead tr:first-child th,
-#div_display_new thead tr:first-child th
-{
-    padding-bottom:15px;
-    font-size:21px;
-}
 
 /* ---------- 2) <aside> ---------- */
-#div_input{
-    border-style: none;
-    float: left;
-    width: 27.5%;
-}
-
 /* btn_find */
-#div_input tbody tr:nth-child(2) td{
+#div_input tbody tr:nth-child(3) td{
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 60px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 
 #btn_find{

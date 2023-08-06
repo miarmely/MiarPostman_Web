@@ -1,0 +1,42 @@
+/* table */
+.display_table table{
+    width: 100%;
+    text-align: center;
+    border-style: solid;
+}
+
+.display_table thead th{
+    border-style: solid;
+}
+
+.display_table tbody td{
+    border-style: double;
+}
+
+/* <th> of table title */
+.display_table thead tr:first-child th
+{
+    padding-top: 10px;;
+    padding-bottom:10px;
+    font-size:21px;
+}
+
+/* quantity label */
+.display_table .person_quantity{
+    float:right;
+    margin-right:12px;
+    font-size:18px;
+    padding-top:2px;
+}
+
+.display_table .person_quantity b{
+    padding-left: 3px;
+    font-size: 22px;
+    color :orange;
+}
+
+/* table title */
+.display_table #lbl_tableTitle{
+    margin-left: 105px;
+}
+

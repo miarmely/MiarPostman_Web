@@ -1,3 +1,6 @@
+import { setEnabledDisabled } from "./miar_tools.js";
+
+
 export var roleCounter = 1;
 export var roleLimit = 0;
 
@@ -65,7 +68,7 @@ export function deleteRoleButton_Clicked() {
 }
 
 
-export function fillRole(roleNo) {
+export function fillRole(roleNo, addBlankValue) {
     let slct_role = $(`#slct_role${roleNo}`);
 
     $.ajax({
@@ -74,6 +77,13 @@ export function fillRole(roleNo) {
         datatype: "json",
         statusCode: {
             200: function (response) {
+                // add blank value to head
+                if(addBlankValue)
+                    slct_role.append(
+                        "<option></option>"
+                    )
+
+                // add roles
                 response.forEach(function (role) {
                     slct_role.append(
                         `<option>${role.roleName}</option>`
@@ -93,6 +103,7 @@ export function fillRole(roleNo) {
 
 
 export function resetRoles() {
+    // hide delete button
     $("#btn_deleteRole").attr("hidden", "");
 
     // remove role selects
@@ -103,16 +114,17 @@ export function resetRoles() {
     roleCounter = 1;
     $("#slct_role1").val("");
 
-    // enable new role button
-    $("#btn_newRole").removeAttr("disabled");
+    setEnabledDisabled({
+        "enabled" : ["#slct_role1", "#btn_newRole"]
+    })
 }
 
 
-export function roleListToString(list, lineWordLimit) {  // list elements concate to one string.
+export function roleNameListToString(roleNamelist, lineWordLimit) {  // list elements concate to one string.
     let stringList = "";
 
-    for (let index in list) {
-        stringList += list[index].roleName;
+    for (let index in roleNamelist) {
+        stringList += roleNamelist[index];
 
         // add new line
         if (index != 0
@@ -120,7 +132,7 @@ export function roleListToString(list, lineWordLimit) {  // list elements concat
             stringList += "<br>";
 
         // add comma
-        else if (index != list.length - 1)
+        else if (index != roleNamelist.length - 1)
             stringList += ", ";
     }
 
@@ -129,16 +141,14 @@ export function roleListToString(list, lineWordLimit) {  // list elements concat
 
 
 export function getRolesInList(){
-    let roles = [];
-
-    // add roles to list
-    for (let no = 1; no <= roleCounter; no += 1)
-        roles.push(
-            {
-                roleName: $(`#slct_role${no}`).val()
-            }
-        );
+    let roleNames = [];
     
-    return roles;
+    // add role names to list
+    for (let no = 1; no <= roleCounter; no += 1){
+        let roleName = $(`#slct_role${no}`).val();
+        roleNames.push(roleName);
+    }
+        
+    return roleNames;
 }
   

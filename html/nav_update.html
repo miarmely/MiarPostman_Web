@@ -1,152 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-        <title>Update Employees</title>
-        <meta charshet="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Update Employees With Http Put Or Patch Request.">
-        <meta name="keywords" content="update employee, update, employee, http put, http patch, put, patch">
-        <meta author="miarmely">
-        <link rel="stylesheet" href="../css/body_header.css">
-        <link rel="stylesheet" href="../css/body_nav.css">
-        <link rel="stylesheet" href="../css/nav_update.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script type="module" src="../js/nav_update.js"></script>
-    </head>
-    <body>
-        <div id="div_container">
-            <header>
-                <div id="div_mainTitle">
-                    <h1><a href="nav_update.html">Update Employee</a></h1>
-                </div>
-            </header>
-            <nav>
-                <div id="div_menu_left">
-                    <ul>
-                        <li><a href="nav_homepage.html">HOMEPAGE</a></li>
-                        <li><a href="nav_create.html">CREATE</a></li>
-                        <li><a href="nav_display.html">DISPLAY</a></li>
-                        <li><a href="nav_update.html">UPDATE</a></li>
-                        <li><a href="#">DELETE</a></li>
-                    </ul>
-                </div>
-                <div id="div_menu_right">
-                    <ul>
-                        <li>
-                            <img id="pic_user" src="../pictures/blank_profile.jpg", alt="profile picture">
-                            <span>USER</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div id="div_page">
-                <section>
-                    <div id="div_display_old" class="display_table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th colspan="7">MATCHED EMPLOYEES</th>
-                                </tr>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Full Name</th>
-                                    <th>Last Name</th>
-                                    <th>Job</th>
-                                    <th>Salary</th>
-                                    <th>Roles</th>
-                                    <th>Register Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="div_display_new" class="display_table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th colspan="7">TODAY UPDATED EMPLOYEES</th>
-                                </tr>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Full Name</th>
-                                    <th>Last Name</th>
-                                    <th>Job</th>
-                                    <th>Salary</th>
-                                    <th>Roles</th>
-                                    <th>Register Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <aside>
-                    <div id="div_input" class="input_table">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr><th colspan="2">FIND MENU</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><label for="inpt_id">Id:</label></td>
-                                        <td><input type="number" id="inpt_id" name="id" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><button type="button" id="btn_find">Find</button></td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">UPDATE MENU</th>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="inpt_fullName">Full Name:</label></td>
-                                        <td><input type="text" id="inpt_fullName" name="fullName" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="inpt_lastName">Last Name:</label></td>
-                                        <td><input type="text" id="inpt_lastName" name="lastName" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="inpt_job">Job:</label></td>
-                                        <td><input type="text" id="inpt_job" name="job" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="inpt_salary">Salary:</label></td>
-                                        <td><input type="number" id="inpt_salary" name="salary" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="slct_role1">Role 1:</label></td>
-                                        <td>
-                                            <select id="slct_role1" required>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2">
-                                            <button type="button" id="btn_newRole" class="role_button">+ New Role</button>
-                                            <button type="button" id="btn_deleteRole" class="role_button" hidden>- Delete Role</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <button type="submit" id="btn_update">Update</button>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </form>
-                    </div>
-                </aside>
+
+<head>
+    <title>Update Employees</title>
+    <meta charshet="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Update Employees With Http Put Or Patch Request.">
+    <meta name="keywords" content="update employee, update, employee, http put, http patch, put, patch">
+    <meta author="miarmely">
+    <link rel="stylesheet" href="../css/nav_update.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/body_header.css">
+    <link rel="stylesheet" href="../css/body_nav.css">
+    <link rel="stylesheet" href="../css/table_display.css">
+    <link rel="stylesheet" href="../css/table_input.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="module" src="../js/nav_update.js"></script>
+</head>
+
+<body>
+    <div id="div_container">
+        <header>
+            <div id="div_mainTitle">
+                <h1><a href="nav_update.html">Update Employees</a></h1>
             </div>
-            <footer>
-            </footer>
-            <script>
-            </script>
-        </div>        
-    </body>
+        </header>
+        <nav>
+            <div id="div_menu_left">
+                <ul>
+                    <li><a href="nav_homepage.html">HOMEPAGE</a></li>
+                    <li><a href="nav_create.html">CREATE</a></li>
+                    <li><a href="nav_display.html">DISPLAY</a></li>
+                    <li><a href="nav_update.html">UPDATE</a></li>
+                    <li><a href="nav_delete.html">DELETE</a></li>
+                </ul>
+            </div>
+            <div id="div_menu_right">
+                <ul>
+                    <li>
+                        <img id="pic_user" src="../pictures/blank_profile.jpg" , alt="profile picture">
+                        <span>USER</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="div_page">
+            <section>
+                <div id="div_display_old" class="display_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <span id="lbl_tableTitle">MATCHED EMPLOYEES </span>
+                                    <span class="person_quantity">
+                                        <i> 
+                                            Quantity: 
+                                            <span id="lbl_personQuantity_matched"><b>0</b></span> 
+                                        </i>
+                                    </span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Full Name</th>
+                                <th>Last Name</th>
+                                <th>Job</th>
+                                <th>Salary</th>
+                                <th>Roles</th>
+                                <th>Register Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="div_display_new" class="display_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="7">
+                                    <span id="lbl_tableTitle">TODAY UPDATED EMPLOYEES </span>
+                                    <span class="person_quantity">
+                                        <i>
+                                            Quantity: 
+                                            <span id="lbl_personQuantity_updated"><b>0</b></span> 
+                                        </i>
+                                    </span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Full Name</th>
+                                <th>Last Name</th>
+                                <th>Job</th>
+                                <th>Salary</th>
+                                <th>Roles</th>
+                                <th>Register Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <aside>
+                <div id="div_input" class="input_table">
+                    <form>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">FIND MENU</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><label for="inpt_id">Id:</label></td>
+                                    <td><input type="number" id="inpt_id" name="id" required></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="td_lbl_result"><span></span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><button type="button" id="btn_find">Find</button></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">UPDATE MENU</th>
+                                </tr>
+                                <tr>
+                                    <td><label for="inpt_fullName">Full Name:</label></td>
+                                    <td><input type="text" id="inpt_fullName" name="fullName" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="inpt_lastName">Last Name:</label></td>
+                                    <td><input type="text" id="inpt_lastName" name="lastName" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="inpt_job">Job:</label></td>
+                                    <td><input type="text" id="inpt_job" name="job" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="inpt_salary">Salary:</label></td>
+                                    <td><input type="number" id="inpt_salary" name="salary" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="slct_role1">Role 1:</label></td>
+                                    <td>
+                                        <select id="slct_role1" required>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="button" id="btn_newRole" class="role_button">+ New Role</button>
+                                        <button type="button" id="btn_deleteRole" class="role_button" hidden>- Delete
+                                            Role</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="td_lbl_result"><span id="lbl_result"></span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" id="btn_update">Update</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </aside>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+
 </html>

@@ -1,45 +1,29 @@
-import { dateTimeFormatter } from "./miar_tools.js"
-import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked, resetRoles, roleCounter, roleListToString } from "./miar_role.js";
+import { addPersonsToTable, resetInputForm, updateLabel } from "./miar_tools.js"
+import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked} from "./miar_role.js";
 
 
 $(function () {
     fillTable();
-    fillRole(1);
+    fillRole(1, false);
 
 
     function fillTable() {
         let table = $("#div_display tbody")
         let getData = {
-            id: -1,
-            fullName: "-1",
-            lastName: "-1",
-            job: "-1",
-            salary: "-1",
-            registerDate: new Date().toLocaleDateString(),
-            roles: []
+            registerDate: new Date().toLocaleString(),
         }
 
         $.ajax({
             method: "GET",
             url: `http://localhost:5282/api/employee/condition`,
-            traditional: true,
             data: getData,
             dataType: "json",
             statusCode: {
                 200: function (response) {
-                    response.forEach(function (personal) {
-                        let roleNames = roleListToString(personal.roles, 4);
-
-                        table.prepend(
-                            `<tr><td>${personal.id}</td>
-                            <td>${personal.fullName}</td>
-                            <td>${personal.lastName}</td>
-                            <td>${personal.job}</td>
-                            <td>${personal.salary} TL</td>
-                            <td>${roleNames}</td>
-                            <td>${dateTimeFormatter(personal.registerDate)}</td></tr>`
-                        )
-                    })
+                    // update personQuantity label
+                    updateLabel("#lbl_personQuantity b", response.length);
+                    
+                    addPersonsToTable(table, response);
                 },
             }
         });
@@ -51,7 +35,7 @@ $(function () {
         let table = $("#div_display tbody");
 
         // set data of ajax
-        let formData = {
+        let postData = {
             fullName: $("#inpt_fullName").val(),
             lastName: $("#inpt_lastName").val(),
             job: $("#inpt_job").val(),
@@ -65,25 +49,16 @@ $(function () {
             method: "POST",
             url: "http://localhost:5282/api/employee",
             contentType: "application/json",
-            data: JSON.stringify(formData),
+            data: JSON.stringify(postData),
             dataType: "json",
             statusCode: {
                 200: function (response) {
-                    let roleNames = roleListToString(response.roles, 4);
+                    // update result label
+                    $("#tr_lbl_result").removeAttr("hidden");  // remove hidden
+                    updateLabel("#lbl_result", "<b>Successfully</b> Create", 3);
 
-                    table.prepend(
-                        `<tr><td>${response.id}</td>
-                        <td>${response.fullName}</td>
-                        <td>${response.lastName}</td>
-                        <td>${response.job}</td>
-                        <td>${response.salary} TL</td>
-                        <td>${roleNames}</td>
-                        <td>${dateTimeFormatter(response.registerDate)}</td></tr>`
-                    )
-
-                    // reset
-                    $("#div_input form")[0].reset();  // inputs
-                    resetRoles();
+                    addPersonsToTable(table, response);
+                    resetInputForm();
                 },
                 400: function () {
                     alert("Please Write True Type On Inputs.")

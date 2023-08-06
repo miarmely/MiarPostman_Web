@@ -7,10 +7,12 @@
         <meta name="description" content="Display Employees Working At Factory">
         <meta name="keywords" content="display, employee, employees, working at factory, factory, employees at working at factory">
         <meta author="miarmely">
-        <link rel="stylesheet" href="../css/body_header.css">
-        <link rel="stylesheet" href="../css/body_nav.css">
         <link rel="stylesheet" href="../css/nav_display.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/body_header.css">
+        <link rel="stylesheet" href="../css/body_nav.css">
+        <link rel="stylesheet" href="../css/table_display.css">
+        <link rel="stylesheet" href="../css/table_input.css">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script type="module" src="../js/nav_display.js"></script>
     </head>
@@ -28,7 +30,7 @@
                         <li><a href="nav_create.html">CREATE</a></li>
                         <li><a href="nav_display.html">DISPLAY</a></li>
                         <li><a href="nav_update.html">UPDATE</a></li>
-                        <li><a href="#">DELETE</a></li>
+                        <li><a href="nav_delete.html">DELETE</a></li>
                     </ul>
                 </div>
                 <div id="div_menu_right">
@@ -45,6 +47,17 @@
                     <div id="div_display" class="display_table">
                         <table>
                             <thead>
+                                <tr>
+                                    <th colspan="7">
+                                        <span id="lbl_tableTitle">MATCHED EMPLOYEES </span>
+                                        <span class="person_quantity">
+                                            <i>
+                                                Quantity: 
+                                                <span id="lbl_personQuantity"><b>0</b></span> 
+                                            </i>
+                                        </span>
+                                    </th>
+                                </tr>
                                 <tr>
                                     <th>Id</th>
                                     <th>Full Name</th>
@@ -86,7 +99,8 @@
                                     </tr>
                                     <tr>
                                         <td><label for="slct_role">Role:</label></td>
-                                        <td><select id="slct_role", class="role_select">
+                                        <td>
+                                            <select id="slct_role", class="role_select">
                                             </select>
                                         </td>
                                     </tr>
@@ -96,7 +110,12 @@
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                    <tr><td colspan="2"><button type="button" id="btn_display" class="input_form_button">Display</button></td></tr>
+                                    <tr>
+                                        <td colspan="2" class="td_lbl_result"><span id="lbl_result"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><button type="button" id="btn_display" class="input_form_button">Display</button></td>
+                                    </tr>
                                 </tfoot>
                             </table>
                     </div>

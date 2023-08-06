@@ -1,0 +1,77 @@
+.input_table table{
+    border-style: solid;
+    width: 100%;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.input_table td{
+    padding-bottom:4px;
+}
+
+/* <label> */
+.input_table tbody label{
+    margin-right: 25px;
+}
+
+/* <input> */
+.input_table input{
+    font-size: 14.5px;
+}
+
+.input_table input[type="text"],
+.input_table input[type="number"]
+{
+    min-width:95.5%;
+}
+
+.input_table input[type="date"]
+{
+    min-width:97.5%;
+}
+
+/* <select> */
+.input_table select{
+    min-width: 100%;
+    font-size: 14.55px;
+    min-height: 22px;
+}
+
+/* <tfoot> */
+.input_table tfoot{
+    text-align: center;
+}
+
+/* role buttons */
+.input_table .role_button{
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* resul label */
+.td_lbl_result{
+    padding-top:20px;
+
+}
+
+.td_lbl_result #lbl_result i{
+    font-size:20px;
+}
+
+.td_lbl_result #lbl_result b{
+    font-size: 21px;
+    color :orange;
+}
+
+/* <button> at bottom */
+.input_table tfoot tr:last-child td{
+    padding-top: 20px;
+    padding-bottom:5px;
+}
+
+.input_table tfoot tr:last-child button{
+    padding: 5px 40px;
+    font-size:15px
+}

@@ -1,4 +1,4 @@
-/* ----- <div> ----- */
+/* -------------- <div> -------------- */
 div{
     border-style: solid;
 }
@@ -13,93 +13,24 @@ div{
     margin-top: 1%
 }
 
-/* ----- div_input <form> ----- */
+
+/* -------------- div_input <form> -------------- */
 .form{
     padding-bottom:5px;
 }
 
-
-/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  input_table  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
-.input_table table{
-    border-style: solid;
-    width: 100%;
-    font-size: 18px;
-    padding-top: 10px;
-    padding-left: 5%;
-    padding-right: 5%;
+section{
+    width:70%;
+    float:left
 }
 
-.input_table td{
-    padding-bottom:4px;
+aside{
+    width:28.5%;
+    float:right
 }
 
-/* <label> */
-.input_table tbody label{
-    margin-right: 25px;
-}
-
-/* <input> */
-.input_table input{
-    font-size: 14.5px;
-}
-
-.input_table input[type="text"],
-.input_table input[type="number"]
+#div_display,
+#div_input
 {
-    min-width:95.5%;
-}
-
-.input_table input[type="date"]
-{
-    min-width:97.5%;
-}
-
-/* <select> */
-.input_table select{
-    min-width: 100%;
-    font-size: 14.55px;
-    min-height: 22px;
-}
-
-/* <tfoot> */
-.input_table tfoot{
-    text-align: center;
-}
-
-/* role buttons */
-.input_table .role_button{
-    margin-top: 15px;
-    font-size: 13px;
-}
-
-/* <button> at bottom */
-.input_table tfoot tr:last-child td{
-    padding-top: 35px;
-    padding-bottom:5px;
-}
-
-.input_table tfoot tr:last-child button{
-    padding: 5px 40px;
-    font-size:15px
-    
-}
-
-.input_table thead th{
-    padding-bottom: 18px;
-}
-
-
-/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  display <table>  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
-.display_table table{
-    width: 100%;
-    text-align: center;
-    border-style: solid;
-}
-
-.display_table thead th{
-    border-style: solid;
-}
-
-.display_table tbody td{
-    border-style: double;
+    width:100%;
 }

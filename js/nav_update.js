@@ -1,24 +1,23 @@
-import { dateTimeFormatter } from "./miar_tools.js"
-import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked, resetRoles, roleCounter, roleListToString } from "./miar_role.js";
+import { dateTimeFormatter, updateLabel } from "./miar_tools.js"
+import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked, resetRoles, roleCounter, roleNameListToString } from "./miar_role.js";
 
 
 $(function () {
-    fillRole(1);
+    fillRole(1, false);
 
-
-    function resetUpdateMenu(){
+    function resetUpdateMenu() {
         // reset inputs and selects
         $("#inpt_fullName").val("");
         $("#inpt_lastName").val("");
         $("#inpt_job").val("");
         $("#inpt_salary").val("");
         resetRoles();
-        
+
         // enable Role 1 
-        $("#slct_role1").removeAttr("disabled");  
+        $("#slct_role1").removeAttr("disabled");
     }
 
-        
+
     $("#btn_find").click(function () {
         let table = $("#div_display_old tbody");
 
@@ -41,15 +40,16 @@ $(function () {
             datatype: "json",
             statusCode: {
                 200: function (person) {
+                    updateLabel("#lbl_personQuantity_matched b", 1);
+
                     // add employee to table 
-                    let roleNames = roleListToString(person.roles);
                     table.prepend(
                         `<tr><td>${person.id}</td>
                         <td>${person.fullName}</td>
                         <td>${person.lastName}</td>
                         <td>${person.job}</td>
                         <td>${person.salary}</td>
-                        <td>${roleNames}</td>
+                        <td>${roleNameListToString(person.roles, 3)}</td>
                         <td>${dateTimeFormatter(person.registerDate)}</td></tr>`
                     )
 
@@ -60,9 +60,9 @@ $(function () {
                     $("#inpt_salary").val(person.salary);
 
                     // fill roles
-                    person.roles.forEach(function (role) {
+                    person.roles.forEach(function (roleName) {
                         // set default value
-                        $(`#slct_role${roleCounter}`).val(role.roleName);
+                        $(`#slct_role${roleCounter}`).val(roleName);
 
                         // add new slct_role
                         if (roleCounter < person.roles.length)
@@ -97,10 +97,10 @@ $(function () {
 
         let data = {
             id: id,
-            fullName: $("#inpt_fullName").val() ? $("#inpt_fullName").val() : "-1",
-            lastName: $("#inpt_lastName").val() ? $("#inpt_lastName").val() : "-1",
-            job: $("#inpt_job").val() ? $("#inpt_job").val() : "-1",
-            salary: $("#inpt_salary").val() ? $("#inpt_salary").val() : -1,
+            fullName: $("#inpt_fullName").val() ? $("#inpt_fullName").val() : null,
+            lastName: $("#inpt_lastName").val() ? $("#inpt_lastName").val() : null,
+            job: $("#inpt_job").val() ? $("#inpt_job").val() : null,
+            salary: $("#inpt_salary").val() ? $("#inpt_salary").val() : null,
             roles: getRolesInList(),
         }
 
@@ -117,9 +117,8 @@ $(function () {
                 dataType: "json",
                 statusCode: {
                     200: function (response) {
-                        let table = $("#div_display_new tbody");
-
                         // add updated employee to table
+                        let table = $("#div_display_new tbody");
                         table.prepend(
                             `<tr>
                                 <td>${response.id}</td>
@@ -127,10 +126,14 @@ $(function () {
                                 <td>${response.lastName}</td>
                                 <td>${response.job}</td>
                                 <td>${response.salary}</td>
-                                <td>${roleListToString(response.roles, 4)}</td>
+                                <td>${roleNameListToString(response.roles, 4)}</td>
                                 <td>${dateTimeFormatter(response.registerDate)}</td>
                             </tr>`
                         );
+                            
+                        // update person quantity label
+                        let updateQuantity = table.children("tr").length;
+                        updateLabel("#lbl_personQuantity_updated b", updateQuantity)
                     },
                     404: function () {
                         alert(`Id:${id} Not Found!..`);
