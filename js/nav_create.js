@@ -1,10 +1,10 @@
-import { addPersonsToTable, resetInputForm, updateLabel } from "./miar_tools.js"
-import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked} from "./miar_role.js";
+import { addPersonsToTable, resetInputForm, updateResultLabel } from "./miar_tools.js"
+import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked } from "./miar_role.js";
 
 
 $(function () {
     fillTable();
-    fillRole(1, false);
+    fillRole(1, false, ["#btn_create"]);
 
 
     function fillTable() {
@@ -20,10 +20,7 @@ $(function () {
             dataType: "json",
             statusCode: {
                 200: function (response) {
-                    // update personQuantity label
-                    updateLabel("#lbl_personQuantity b", response.length);
-                    
-                    addPersonsToTable(table, response);
+                    addPersonsToTable(table, response, "#spn_personQuantity");
                 },
             }
         });
@@ -51,20 +48,15 @@ $(function () {
             contentType: "application/json",
             data: JSON.stringify(postData),
             dataType: "json",
-            statusCode: {
-                200: function (response) {
-                    // update result label
-                    $("#tr_lbl_result").removeAttr("hidden");  // remove hidden
-                    updateLabel("#lbl_result", "<b>Successfully</b> Create", 3);
-
-                    addPersonsToTable(table, response);
-                    resetInputForm();
-                },
-                400: function () {
-                    alert("Please Write True Type On Inputs.")
-                }
+            success: function (response) {
+                addPersonsToTable(table, response, "#spn_personQuantity");
+                updateResultLabel("#td_resultLabel", "<b>Successfully</b> Create", 3);
+                resetInputForm();
+            },
+            error: function () {
+                updateResultLabel("#td_resultLabel", "Something Is Wrong!..", 3);
             }
-        });
+        })
     })
 
 

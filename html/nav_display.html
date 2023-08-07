@@ -53,7 +53,7 @@
                                         <span class="person_quantity">
                                             <i>
                                                 Quantity: 
-                                                <span id="lbl_personQuantity"><b>0</b></span> 
+                                                <span id="spn_personQuantity"><b>0</b></span> 
                                             </i>
                                         </span>
                                     </th>
@@ -75,6 +75,7 @@
                 </section>
                 <aside>
                     <div id="div_input" class="input_table">
+                        <form>
                             <table>
                                 <tbody>
                                     <tr>
@@ -110,14 +111,15 @@
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                    <tr>
-                                        <td colspan="2" class="td_lbl_result"><span id="lbl_result"></span></td>
+                                    <tr hidden>
+                                        <td colspan="2" id="td_resultLabel" class="td_resultLabel"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><button type="button" id="btn_display" class="input_form_button">Display</button></td>
+                                        <td colspan="2"><button type="button" id="btn_display" class="input_form_button" disabled>Display</button></td>
                                     </tr>
                                 </tfoot>
                             </table>
+                        </form>
                     </div>
                 </aside>
             </div>

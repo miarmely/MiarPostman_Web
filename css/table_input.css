@@ -11,12 +11,12 @@
     padding-bottom:4px;
 }
 
-/* <label> */
+/* --------------- <label> --------------- */
 .input_table tbody label{
     margin-right: 25px;
 }
 
-/* <input> */
+/* --------------- <input> --------------- */
 .input_table input{
     font-size: 14.5px;
 }
@@ -32,40 +32,39 @@
     min-width:97.5%;
 }
 
-/* <select> */
+/* --------------- <select> ---------------*/
 .input_table select{
     min-width: 100%;
     font-size: 14.55px;
     min-height: 22px;
 }
 
-/* <tfoot> */
+/* --------------- <tfoot> --------------- */
 .input_table tfoot{
     text-align: center;
 }
 
-/* role buttons */
+/* --------------- role buttons --------------- */
 .input_table .role_button{
     margin-top: 15px;
     font-size: 13px;
 }
 
-/* resul label */
-.td_lbl_result{
+/* --------------- result label ---------------*/
+.td_resultLabel{
     padding-top:20px;
-
+    text-align: center;
 }
-
-.td_lbl_result #lbl_result i{
+.td_resultLabel i{
     font-size:20px;
 }
 
-.td_lbl_result #lbl_result b{
+.td_resultLabel b{
     font-size: 21px;
     color :orange;
 }
 
-/* <button> at bottom */
+/* --------------- <button> at bottom --------------- */
 .input_table tfoot tr:last-child td{
     padding-top: 20px;
     padding-bottom:5px;

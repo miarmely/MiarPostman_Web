@@ -1,9 +1,9 @@
-import { addPersonsToTable, dateTimeFormatter, updateLabel } from "./miar_tools.js";
-import { fillRole, roleNameListToString } from "./miar_role.js";
+import { addPersonsToTable, resetInputForm, resetTable, updatePersonQuantityLabel, updateResultLabel } from "./miar_tools.js";
+import { fillRole } from "./miar_role.js";
 
 
 $(function () {
-    fillRole("", true);
+    fillRole("", true, ["#btn_display"]);
 
 
     $("#btn_display").click(function () {
@@ -34,8 +34,7 @@ $(function () {
 
     function getPersonalsByCondition(getData) {
         let table = $("#div_display tbody")
-        table.empty();  // reset table
-
+        
         $.ajax({
             method: "GET",
             url: "http://localhost:5282/api/employee/condition",
@@ -43,48 +42,32 @@ $(function () {
             data: getData,
             contentType: "application/json",
             datatype: "json",
-            statusCode: {
-                200: function (response) {
-                    addPersonsToTable(table, response);
-                },
-                404: function () {
-                    updateLabel("#lbl_result", "Employee <b>Not Found</b>");
-                }
+            success: (response) => {
+                resetTable(table, "#spn_personQuantity");
+                addPersonsToTable(table, response, "#spn_personQuantity");
+            },
+            error: (response) => {
+                resetTable(table, "#spn_personQuantity");
+                updateResultLabel("#td_resultLabel", response.responseText, 3);
             }
         });
     }
 
 
     function getAllPersonals() {
-        let table = $("#div_display tbody")
-        table.empty();  // reset table
-
+        let table = $("#div_display tbody");
+        
         $.ajax({
             method: "GET",
             url: "http://localhost:5282/api/employee",
             datatype: "json",
-            statusCode: {
-                200: function (response) {
-                    // update personQuantity label
-                    updateLabel("#lbl_personQuantity", `<b>${response.length}</b>`);
-
-                    response.forEach(function (person) {
-                        let roleNames = roleNameListToString(person.roles, 3);
-
-                        table.prepend(
-                            `<tr><td>${person.id}</td>
-                            <td>${person.fullName}</td>
-                            <td>${person.lastName}</td>
-                            <td>${person.job}</td>
-                            <td>${person.salary}</td>
-                            <td>${roleNames}</td>
-                            <td>${dateTimeFormatter(person.registerDate)}</td></tr>`
-                        )
-                    })
-                },
-                404: function () {
-                    updateLabel("#lbl_result", "Employee <b>Not Found</b>", 3);
-                }
+            success: (response) => {
+                resetTable(table, "#spn_personQuantity");
+                addPersonsToTable(table, response, "#spn_personQuantity");
+            },
+            error: (response) => {
+                resetTable(table, "#spn_personQuantity");
+                updateResultLabel("#td_resultLabel", response.responseText, 3);
             }
         });
     }

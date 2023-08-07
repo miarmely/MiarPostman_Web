@@ -46,16 +46,16 @@
         </nav>
         <div id="div_page">
             <section>
-                <div id="div_display_old" class="display_table">
+                <div id="div_display_matched" class="display_table">
                     <table>
                         <thead>
                             <tr>
                                 <th colspan="7">
                                     <span id="lbl_tableTitle">MATCHED EMPLOYEES </span>
                                     <span class="person_quantity">
-                                        <i> 
-                                            Quantity: 
-                                            <span id="lbl_personQuantity_matched"><b>0</b></span> 
+                                        <i>
+                                            Quantity:
+                                            <span id="spn_personQuantity_matched"><b>0</b></span>
                                         </i>
                                     </span>
                                 </th>
@@ -74,16 +74,16 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="div_display_new" class="display_table">
+                <div id="div_display_updated" class="display_table">
                     <table>
                         <thead>
                             <tr>
                                 <th colspan="7">
-                                    <span id="lbl_tableTitle">TODAY UPDATED EMPLOYEES </span>
+                                    <span id="lbl_tableTitle">UPDATED EMPLOYEES </span>
                                     <span class="person_quantity">
                                         <i>
-                                            Quantity: 
-                                            <span id="lbl_personQuantity_updated"><b>0</b></span> 
+                                            Quantity:
+                                            <span id="spn_personQuantity_updated"><b>0</b></span>
                                         </i>
                                     </span>
                                 </th>
@@ -105,8 +105,8 @@
             </section>
             <aside>
                 <div id="div_input" class="input_table">
-                    <form>
-                        <table>
+                    <table>
+                        <form id="form_update">
                             <thead>
                                 <tr>
                                     <th colspan="2">FIND MENU</th>
@@ -117,11 +117,11 @@
                                     <td><label for="inpt_id">Id:</label></td>
                                     <td><input type="number" id="inpt_id" name="id" required></td>
                                 </tr>
-                                <tr>
-                                    <td colspan="2" class="td_lbl_result"><span></span></td>
+                                <tr hidden>
+                                    <td colspan="2" id="td_resultLabel_find" class="td_resultLabel"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><button type="button" id="btn_find">Find</button></td>
+                                    <td colspan="2"><button type="button" id="btn_find" disabled>Find</button></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2">UPDATE MENU</th>
@@ -159,16 +159,16 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="td_lbl_result"><span id="lbl_result"></span></td>
+                                    <td colspan="2" id="td_resultLabel" class="td_resultLabel"><span></span></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <button type="submit" id="btn_update">Update</button>
+                                        <button type="submit" id="btn_update" disabled>Update</button>
                                     </td>
                                 </tr>
                             </tfoot>
-                        </table>
-                    </form>
+                        </form>
+                    </table>
                 </div>
             </aside>
         </div>

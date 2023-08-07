@@ -53,7 +53,7 @@
                                         <span class="person_quantity">
                                             <i>
                                                 Quantity: 
-                                                <span id="lbl_personQuantity"><b>0</b></span> 
+                                                <span id="spn_personQuantity"><b>0</b></span> 
                                             </i>
                                         </span>
                                     </th>
@@ -112,15 +112,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2"><button type="button" id="btn_find">Find</button></td>
+                                        <td colspan="2"><button type="button" id="btn_find" disabled>Find</button></td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="2"><span class="lbl_result"></span></td>
+                                    <tr hidden>
+                                        <td colspan="2" id="td_resultLabel", class="td_resultLabel"></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
                                             <button type="submit" id="btn_delete" disabled>Delete</button>
-                                            <button type="button" id="btn_back" disabled>Back</button>
                                         </td>
                                     </tr>
                                 </tfoot>

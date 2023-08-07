@@ -1,4 +1,4 @@
-import { setEnabledDisabled } from "./miar_tools.js";
+import { setEnabledDisabled, updateResultLabel } from "./miar_tools.js";
 
 
 export var roleCounter = 1;
@@ -68,35 +68,37 @@ export function deleteRoleButton_Clicked() {
 }
 
 
-export function fillRole(roleNo, addBlankValue) {
+export function fillRole(roleNo, addBlankValue, buttonNames) {
     let slct_role = $(`#slct_role${roleNo}`);
 
     $.ajax({
         method: "GET",
         url: "http://localhost:5282/api/role",
         datatype: "json",
-        statusCode: {
-            200: function (response) {
-                // add blank value to head
-                if(addBlankValue)
-                    slct_role.append(
-                        "<option></option>"
-                    )
+        success: (response) => {
+            // add blank value to head
+            if(addBlankValue)
+            slct_role.append("<option></option>")
 
-                // add roles
-                response.forEach(function (role) {
-                    slct_role.append(
-                        `<option>${role.roleName}</option>`
-                    )
-                })
-                
-                slct_role.val("");  // set select text as blank
-                roleLimit = response.length;  // set role limit
+            // add roles
+            response.forEach(function (role) {
+                slct_role.append(`<option>${role.roleName}</option>`)
+            })
+            
+            slct_role.val("");  // set select text as blank
+            roleLimit = response.length;  // set role limit
 
-                // enable new role button
-                if(response.length != 1)
-                    $("#btn_newRole").removeAttr("disabled");
-            }
+            // enable new role button
+            if(response.length != 1)
+                $("#btn_newRole").removeAttr("disabled");
+
+            // enable buttons
+            setEnabledDisabled({
+                "enabled": buttonNames
+            });
+        },
+        error : (response) => {
+            updateResultLabel("#td_resultLabel", response.Text, 3);
         }
     });
 }

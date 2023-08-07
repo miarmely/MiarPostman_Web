@@ -1,35 +1,19 @@
-import { dateTimeFormatter, updateLabel } from "./miar_tools.js"
+import { addPersonsToTable, dateTimeFormatter, resetInputForm, resetTable, updateResultLabel } from "./miar_tools.js"
 import { deleteRoleButton_Clicked, fillRole, getRolesInList, newRoleButton_Clicked, resetRoles, roleCounter, roleNameListToString } from "./miar_role.js";
 
 
 $(function () {
-    fillRole(1, false);
-
-    function resetUpdateMenu() {
-        // reset inputs and selects
-        $("#inpt_fullName").val("");
-        $("#inpt_lastName").val("");
-        $("#inpt_job").val("");
-        $("#inpt_salary").val("");
-        resetRoles();
-
-        // enable Role 1 
-        $("#slct_role1").removeAttr("disabled");
-    }
+    fillRole(1, false, ["#btn_find", "#btn_update"]);
 
 
-    $("#btn_find").click(function () {
-        let table = $("#div_display_old tbody");
+    $("#btn_find").click(function (event) {
+        event.preventDefault();
 
-        // reset
-        table.empty();
-        resetUpdateMenu();
-
+        let table = $("#div_display_matched tbody");
         let id = $("#inpt_id").val();
 
-        // when id not enter
         if (!id) {
-            alert("You Have To Enter Id.");
+            updateResultLabel("#td_resultLabel_find", "You Should <b>Enter Id</b>", 3);
             return;
         }
 
@@ -38,40 +22,33 @@ $(function () {
             method: "GET",
             url: `http://localhost:5282/api/employee/${id}`,
             datatype: "json",
-            statusCode: {
-                200: function (person) {
-                    updateLabel("#lbl_personQuantity_matched b", 1);
+            success: function (response) {
+                // reset
+                resetTable(table, "#spn_personQuantity_matched");
+                resetUpdateMenu();
 
-                    // add employee to table 
-                    table.prepend(
-                        `<tr><td>${person.id}</td>
-                        <td>${person.fullName}</td>
-                        <td>${person.lastName}</td>
-                        <td>${person.job}</td>
-                        <td>${person.salary}</td>
-                        <td>${roleNameListToString(person.roles, 3)}</td>
-                        <td>${dateTimeFormatter(person.registerDate)}</td></tr>`
-                    )
+                addPersonsToTable(table, response, "#spn_personQuantity_matched");
 
-                    // fill inputs at update menu
-                    $("#inpt_fullName").val(person.fullName);
-                    $("#inpt_lastName").val(person.lastName);
-                    $("#inpt_job").val(person.job);
-                    $("#inpt_salary").val(person.salary);
+                // fill inputs at update menu
+                $("#inpt_fullName").val(response.fullName);
+                $("#inpt_lastName").val(response.lastName);
+                $("#inpt_job").val(response.job);
+                $("#inpt_salary").val(response.salary);
 
-                    // fill roles
-                    person.roles.forEach(function (roleName) {
-                        // set default value
-                        $(`#slct_role${roleCounter}`).val(roleName);
+                // add roles
+                response.roles.forEach(function (roleName) {
+                    // set default value
+                    $(`#slct_role${roleCounter}`).val(roleName);
 
-                        // add new slct_role
-                        if (roleCounter < person.roles.length)
-                            newRoleButton_Clicked();
-                    })
-                },
-                404: function (response) {
-                    alert(`Id:${id} Not Matched.`)
-                },
+                    // add new slct_role
+                    if (roleCounter < response.roles.length)
+                        newRoleButton_Clicked();
+                })
+            },
+            error: function (response) {
+                resetTable(table, "#spn_personQuantity_matched");
+                resetUpdateMenu();
+                updateResultLabel("#td_resultLabel_find", response.responseText, 3);
             }
         })
     });
@@ -87,14 +64,13 @@ $(function () {
     });
 
 
-    $("#div_input form").submit(function (event) {
+    $("#form_update").submit(function (event) {
         event.preventDefault();  // for to close auto reset to form.
+
+        // set variables
+        let matchedTable = $("#div_display_matched tbody");
+        let updatedTable = $("#div_display_updated tbody");
         let id = $("#inpt_id").val();
-
-        // when inpt_id is empty
-        if (!id)
-            return;
-
         let data = {
             id: id,
             fullName: $("#inpt_fullName").val() ? $("#inpt_fullName").val() : null,
@@ -115,31 +91,28 @@ $(function () {
                 data: JSON.stringify(data),
                 contentType: "application/json",
                 dataType: "json",
-                statusCode: {
-                    200: function (response) {
-                        // add updated employee to table
-                        let table = $("#div_display_new tbody");
-                        table.prepend(
-                            `<tr>
-                                <td>${response.id}</td>
-                                <td>${response.fullName}</td>
-                                <td>${response.lastName}</td>
-                                <td>${response.job}</td>
-                                <td>${response.salary}</td>
-                                <td>${roleNameListToString(response.roles, 4)}</td>
-                                <td>${dateTimeFormatter(response.registerDate)}</td>
-                            </tr>`
-                        );
-                            
-                        // update person quantity label
-                        let updateQuantity = table.children("tr").length;
-                        updateLabel("#lbl_personQuantity_updated b", updateQuantity)
-                    },
-                    404: function () {
-                        alert(`Id:${id} Not Found!..`);
-                    }
+                success: (response) => {
+                    addPersonsToTable(updatedTable, response, "#spn_personQuantity_updated");
+                },
+                error: (response) => {
+                    resetTable(matchedTable, "#spn_personQuantity_matched");
+                    resetUpdateMenu();
+                    updateResultLabel("#td_resultLabel", response.responseText, 3);
                 }
             });
         }
     });
+
+
+    function resetUpdateMenu() {
+        // reset inputs and selects
+        $("#inpt_fullName").val("");
+        $("#inpt_lastName").val("");
+        $("#inpt_job").val("");
+        $("#inpt_salary").val("");
+        resetRoles();
+
+        // enable Role 1 
+        $("#slct_role1").removeAttr("disabled");
+    }
 });
